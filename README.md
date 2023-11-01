@@ -68,13 +68,18 @@ y_train.shape
 x_train.shape
 # Creating a Classifier using Sklearn
 from sklearn.linear_model import LogisticRegression
-clf=LogisticRegression(random_state=0,solver='lbfgs',max_iter=1000).fit(x_train,y_train)
-# Printing the acc
-clf=LogisticRegression()
-clf.fit(x_train,y_train)
-clf.score(x_test,y_test)
+lr=LogisticRegression(solver="liblinear")
+lr.fit(x_train,y_train)
+y_pred=lr.predict(x_test)
+y_pred
+from sklearn.metrics import confusion_matrix
+confusion=confusion_matrix(y_test,y_pred)
+confusion
+from sklearn.metrics import classification_report
+classification_report1 = classification_report(y_test,y_pred)
+print(classification_report1)
 # Predicting for random value
-clf.predict([[1	,78.33,	1,	2,	77.48,	2,	86.5,	0,	66.28]])
+lr.predict([[1	,78.33,	1,	2,	77.48,	2,	86.5,	0,	66.28]])
 ```
 
 ## Output:
@@ -102,8 +107,14 @@ clf.predict([[1	,78.33,	1,	2,	77.48,	2,	86.5,	0,	66.28]])
 ![11](./11.png)
 ### Shape of x_train and y_train:
 ![12](./12.png)
-### Creating a Classifier using Sklearn:
+### Y_pred Array:
+![15](./15.png)
+### Accuracy:
 ![13](./13.png)
+### Confusion Array:
+![17](./17.png)
+### Classification Report:
+![16](./16.png)
 ### Predicting for random value:
 ![14](./14.png)
 ## Result:
